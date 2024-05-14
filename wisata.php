@@ -77,14 +77,25 @@ require 'controller/pageController.php';
                                                   <span class="icon text-white-50">
                                                       <i class="fas fa-eye"></i>
                                                   </span>
-                                                  <span class="text">Lihat</span>
                                               </a>
                                               <a class="btn btn-info btn-icon-split" href="wisataUpdate.php?id=<?php echo $value['id_wisata'] ?>">
                                                   <span class="icon text-white-50">
                                                       <i class="fas fa-pen"></i>
                                                   </span>
-                                                  <span class="text">Ubah</span>
                                               </a>
+                                              <?php if ($value['highlight']==0): ?>
+                                                <a class="btn btn-warning btn-icon-split" href="wisata.php?starid=<?php echo $value['id_wisata'] ?>">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-star"></i>
+                                                    </span>
+                                                </a>
+                                                <?php else: ?>
+                                                <a class="btn btn-success btn-icon-split">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-star"></i>
+                                                    </span>
+                                                </a>
+                                              <?php endif; ?>
                                               <?php
                                                 $deleteId = $value['id_wisata'].'-'.$value['nama_wisata'];
                                                 $imgtype = $value['imgtype'];
@@ -93,7 +104,6 @@ require 'controller/pageController.php';
                                                   <span class="icon text-white-50">
                                                       <i class="fas fa-trash"></i>
                                                   </span>
-                                                  <span class="text">Hapus</span>
                                               </a>
                                             </td>
                                         </tr>

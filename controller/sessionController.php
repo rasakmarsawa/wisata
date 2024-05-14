@@ -17,7 +17,8 @@ class session
   }
 
   function checkSession($filename){
-    if (!isset($_SESSION['username'])&&$filename!='login') {
+    $list = array("login","index","detail","search");
+    if (!isset($_SESSION['username'])&&!in_array($filename,$list)) {
         header('Location:login.php');
     }
   }
@@ -42,6 +43,14 @@ class session
       }
     }
     return $check;
+  }
+
+  function getPage(){
+    $page = 1;
+    if (isset($_GET['page'])) {
+      $page = $_GET['page'];
+    }
+    return $page;
   }
 }
 

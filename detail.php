@@ -36,27 +36,7 @@ require 'controller/pageController.php';
                 <!-- Side widgets-->
                 <div class="col-lg-4">
                     <!-- Categories widget-->
-                    <div class="card mb-4">
-                        <div class="card-header">Categories</div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <?php foreach ($data21 as $key => $value): ?>
-                                          <li><a href="search.php?category=<?php echo $value['id_kategori'] ?>"><?php echo $value['nama_kategori'] ?></a></li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <?php foreach ($data22 as $key => $value): ?>
-                                          <li><a href="search.php?category=<?php echo $value['id_kategori'] ?>"><?php echo $value['nama_kategori'] ?></a></li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php require 'include/categorywidget.php' ?>
                     <!-- Side widget-->
                     <div class="card mb-4">
                         <div class="card-header">Lokasi</div>

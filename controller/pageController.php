@@ -111,6 +111,15 @@ switch ($filename) {
         }
       }
     }
+
+    if (isset($_GET['starid'])) {
+      $result = $wisata->highlight($_GET['starid']);
+      if ($result) {
+        header('Location:wisata.php?starsuccess');
+      }else{
+        header('Location:wisata.php?starfail');
+      }
+    }
     break;
 
   case 'wisataCreate':
@@ -193,16 +202,98 @@ switch ($filename) {
             $len++;
           }
 
-          $data21 = array_slice($data2, 0, $len / 2);
-          $data22 = array_slice($data2, $len / 2);
+          $listkategori1 = array_slice($data2, 0, $len / 2);
+          $listkategori2 = array_slice($data2, $len / 2);
         }
       }else{
         header('Location:index.php');
       }
       break;
 
-  default:
+    case 'index':
+      $data = array();
+      $response = $wisata->getHighlight();
+      if($response['result']==1){
+        $data = $response['data'][0];
+      }
 
-    break;
+      $data2 = array();
+      $pagenum = $session->getPage();
+      $response = $wisata->getPageItem($pagenum,0);
+      if($response['result']==1){
+        $data2 = $response['data'];
+
+        $data21 = array_slice($data2, 0, 2);
+        $data22 = array_slice($data2, 2);
+      }
+
+      $data3 = array();
+      $response = $kategori->getAll();
+      if($response['result']==1){
+        $data3 = $response['data'];
+        $len = count($data3);
+        if ($len%2 == 1) {
+          $len++;
+        }
+
+        $listkategori1 = array_slice($data3, 0, $len / 2);
+        $listkategori2 = array_slice($data3, $len / 2);
+      }
+
+      $count = 0;
+      $maxpage = 1;
+      $response = $wisata->count(0);
+      if ($response['result']==1) {
+        $count = $response['data'][0]['count'];
+        $maxpage = ceil($count/4);
+      }
+      break;
+
+      case 'search':
+        $data21 = array();
+        $data22 = array();
+
+        $data = array();
+        $response = $wisata->getHighlight();
+        if($response['result']==1){
+          $data = $response['data'][0];
+        }
+
+        $data2 = array();
+        $pagenum = $session->getPage();
+        $response = $wisata->getPageItem($pagenum,$_GET['category']);
+        if($response['result']==1){
+          $data2 = $response['data'];
+
+          $data21 = array_slice($data2, 0, 2);
+          $data22 = array_slice($data2, 2);
+        }
+
+        $data3 = array();
+        $response = $kategori->getAll();
+        if($response['result']==1){
+          $data3 = $response['data'];
+          $len = count($data3);
+          if ($len%2 == 1) {
+            $len++;
+          }
+
+          $listkategori1 = array_slice($data3, 0, $len / 2);
+          $listkategori2 = array_slice($data3, $len / 2);
+        }
+
+        $count = 0;
+        $maxpage = 1;
+        $response = $wisata->count($_GET['category']);
+        if ($response['result']==1) {
+          $count = $response['data'][0]['count'];
+          $maxpage = ceil($count/4);
+        }
+        break;
+
+    default:
+
+      break;
+
 }
 ?>
