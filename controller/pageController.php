@@ -14,8 +14,14 @@ $wisata = new wisata();
 //get file name
 if (empty($_SERVER['QUERY_STRING'])) {
   $filename = basename($_SERVER['REQUEST_URI'],'.php');
+  if ($_SERVER['REQUEST_URI']=='/wisata/') {
+    $filename = 'index';
+  }
 }else{
   $filename = basename($_SERVER['REQUEST_URI'], '.php?' . $_SERVER['QUERY_STRING']);
+  if ($_SERVER['REQUEST_URI']=='/wisata/?'.$_SERVER['QUERY_STRING']) {
+    $filename = 'index';
+  }
 }
 
 //checkSession
@@ -193,6 +199,10 @@ switch ($filename) {
           $image = 'uploads/'.$data['id_wisata'].'.'.$data['imgtype'];
         }
 
+        if (empty($data)) {
+          header('Location:index.php');
+        }
+
         $data2 = array();
         $response = $kategori->getAll();
         if($response['result']==1){
@@ -218,6 +228,9 @@ switch ($filename) {
       }
 
       $data2 = array();
+      $data21 = array();
+      $data22 = array();
+
       $pagenum = $session->getPage();
       $response = $wisata->getPageItem($pagenum,0);
       if($response['result']==1){

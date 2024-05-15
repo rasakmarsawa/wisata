@@ -44,6 +44,10 @@ require 'controller/pageController.php';
                           <iframe src="<?php echo $data['map'] ?>" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
+                    <div class="card mb-4">
+                        <div class="card-header">Alamat</div>
+                        <div class="card-body"><?php echo $data['alamat'] ?></div>
+                    </div>
                 </div>
             </div>
         </div>

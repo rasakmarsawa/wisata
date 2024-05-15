@@ -25,15 +25,17 @@ require 'controller/pageController.php';
                 <!-- Blog entries-->
                 <div class="col-lg-8">
                     <!-- Featured blog post-->
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="uploads/<?php echo $data['id_wisata'].".".$data['imgtype'] ?>" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted"><?php echo $data['created_on'] ?></div>
-                            <h2 class="card-title"><?php echo $data['nama_wisata'] ?></h2>
-                            <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p> -->
-                            <a class="btn btn-primary" href="detail.php?id=<?php echo $data['id_wisata'] ?>">Read more →</a>
-                        </div>
-                    </div>
+                    <?php if (isset($data['id_wisata'])): ?>
+                      <div class="card mb-4">
+                          <a href="#!"><img class="card-img-top" src="uploads/<?php echo $data['id_wisata'].".".$data['imgtype'] ?>" alt="..." /></a>
+                          <div class="card-body">
+                              <div class="small text-muted"><?php echo $data['created_on'] ?></div>
+                              <h2 class="card-title"><?php echo $data['nama_wisata'] ?></h2>
+                              <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p> -->
+                              <a class="btn btn-primary" href="detail.php?id=<?php echo $data['id_wisata'] ?>">Read more →</a>
+                          </div>
+                      </div>
+                    <?php endif; ?>
                     <!-- Nested row for non-featured blog posts-->
                     <div class="row">
                         <div class="col-lg-6">
