@@ -26,12 +26,12 @@ class session
   function createSession($data){
     $_SESSION['username'] = $data['username'];
     $_SESSION['nama_admin'] = $data['nama_admin'];
-    header('Location:home.php');
+    header('Location:wisata.php');
   }
 
   function checkUserLogin(){
     if (isset($_SESSION['username'])){
-      header('Location:home.php');
+      header('Location:wisata.php');
     }
   }
 

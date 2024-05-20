@@ -36,7 +36,7 @@ require 'controller/pageController.php';
                 <!-- Side widgets-->
                 <div class="col-lg-4">
                     <!-- Categories widget-->
-                    <?php require 'include/categorywidget.php' ?>
+                    <!-- <?php require 'include/categorywidget.php' ?> -->
                     <!-- Side widget-->
                     <div class="card mb-4">
                         <div class="card-header">Lokasi</div>

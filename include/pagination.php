@@ -7,12 +7,12 @@
           <?php if ($pagenum == 1): ?>
             disabled
           <?php endif; ?>
-          "><a class="page-link" href="?<?php if(isset($_GET['category'])){echo 'category='.$_GET['category'];} ?>&&page=<?php echo $pagenum-1 ?>">Newer</a></li>
+          "><a class="page-link" href="?<?php if(isset($_GET['category'])){echo 'category='.$_GET['category'].'&';} ?>page=<?php echo $pagenum-1 ?>">Newer</a></li>
           <li class="page-item
           <?php if ($pagenum == 1): ?>
             active
           <?php endif; ?>
-          " aria-current="page"><a class="page-link" href="?<?php if(isset($_GET['category'])){echo 'category='.$_GET['category'];} ?>&&page=1">1</a></li>
+          " aria-current="page"><a class="page-link" href="?<?php if(isset($_GET['category'])){echo 'category='.$_GET['category'].'&';} ?>page=1">1</a></li>
           <?php
           $i = 0;
           $startpage = $pagenum-1;
@@ -21,7 +21,7 @@
               ?>
               <li class="page-item
               <?php if ($startpage == $pagenum){ echo "active";} ?>
-              "><a class="page-link" href="?<?php if(isset($_GET['category'])){echo 'category='.$_GET['category'];} ?>&&page=<?php echo $startpage ?>"><?php echo $startpage ?></a></li>
+              "><a class="page-link" href="?<?php if(isset($_GET['category'])){echo 'category='.$_GET['category'].'&';} ?>page=<?php echo $startpage ?>"><?php echo $startpage ?></a></li>
               <?php
             }
           ?>
@@ -37,13 +37,13 @@
             <li class="page-item
             <?php if ($pagenum == $maxpage): ?>
               active
-            <?php endif; ?>"><a class="page-link" href="?<?php if(isset($_GET['category'])){echo 'category='.$_GET['category'];} ?>&&page=<?php echo $maxpage ?>"><?php echo $maxpage ?></a></li>
+            <?php endif; ?>"><a class="page-link" href="?<?php if(isset($_GET['category'])){echo 'category='.$_GET['category'].'&';} ?>page=<?php echo $maxpage ?>"><?php echo $maxpage ?></a></li>
           <?php endif; ?>
           <li class="page-item
           <?php if ($pagenum == $maxpage): ?>
             disabled
           <?php endif; ?>
-          "><a class="page-link" href="?<?php if(isset($_GET['category'])){echo 'category='.$_GET['category'];} ?>&&page=<?php echo $pagenum+1 ?>">Older</a></li>
+          "><a class="page-link" href="?<?php if(isset($_GET['category'])){echo 'category='.$_GET['category'].'&';} ?>page=<?php echo $pagenum+1 ?>">Older</a></li>
       </ul>
   </nav>
 <?php endif; ?>
