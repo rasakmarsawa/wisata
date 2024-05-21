@@ -24,6 +24,9 @@ require 'controller/pageController.php';
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
 </head>
 
 <body class="bg-gradient-primary">
